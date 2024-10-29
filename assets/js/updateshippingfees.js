@@ -29,7 +29,7 @@ function updateShippingFees() {
   if (totalAmount < freeshipping) {
     let shippingFees = 100; // default value
 
-    if (city === "Cairo") {
+    if (city === "Al-Sharqia") {
       shippingFees = 50;
     } else {
       shippingFees = 100;
