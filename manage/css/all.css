@@ -1235,3 +1235,6 @@ section {
 .swal2-cancel {
   background-color: rgb(221 51 51 / 70%) !important;
 }
+.h-auto{
+  height: auto !important;
+}
