@@ -48,8 +48,7 @@
     <main>
         <div class="formbold-form-wrapper">
             <div class="mb-20 flex align-items space-between">
-                <div class="profile-icon" onclick="toggleDropdown()">
-                     <img src="./icon.png" alt="Icon" class="profile-icon-img">
+                <div class="profile-icon profile-icon-img" onclick="toggleDropdown()">
                     <!-- <span><i class="bi bi-diagram-3"></i></span> -->
                     <div id="dropdown" class="dropdown-menu">
                         <a href="./main.html" class="center align-items"><i class="bi bi-house-door mr-5"></i> Home
@@ -76,8 +75,12 @@
                     </div>
                     <div class="formbold-input-group">
                         <label for="producttitle" class="formbold-form-label">Plan Type</label>
-                        <input type="text" name="Plan" id="Plan" placeholder="Enter Plan"
-                            class="formbold-form-input shadow" value="Standard" readonly>
+                        <input type="text" name="Plan" id="Plan" class="formbold-form-input shadow" value="" readonly>
+                    </div>
+                    <div class="formbold-input-group">
+                        <label for="endingat" class="formbold-form-label">Ending At</label>
+                        <input type="text" name="endingat" id="endingdate" placeholder="ending date"
+                            class="formbold-form-input shadow" value="" readonly>
                     </div>
                     <div class="formbold-input-group">
                         <label for="Commission" class="formbold-form-label">Matager Commission</label>
@@ -180,6 +183,8 @@
         document.getElementById('username').value = username;
         document.getElementById('password').value = userpassword;
         document.getElementById('UID').value = uid;
+        document.getElementById('Plan').value = localStorage.getItem('planType');
+        document.getElementById('endingdate').value = localStorage.getItem('endingDate');;
         document.getElementById('createdat').value = createdAt;
         document.getElementById('lastsignedin').value = lastSignInTime;
     </script>
