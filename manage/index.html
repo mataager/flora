@@ -85,6 +85,7 @@
                             const lastSignInTime = user.metadata.lastSignInTime;
                             const displayName = user.displayName;  // Retrieve the display name
 
+                            // Store user info in local storage
                             localStorage.setItem('uid', uid);
                             localStorage.setItem('displayName', displayName);
                             localStorage.setItem('username', username);
@@ -92,11 +93,25 @@
                             localStorage.setItem('createdAt', createdAt);
                             localStorage.setItem('lastSignInTime', lastSignInTime);
 
-                            // Signed in successfully
-                            window.location.href = './main.html';
+                            // Retrieve ID token to use in authenticated requests
+                            return user.getIdToken();
+                        })
+                        .then((idToken) => {
+                            // Fetch store info with uid and idToken
+                            return fetch(`https://matager-f1f00-default-rtdb.firebaseio.com/Stores/${uid}/store-info.json?auth=${idToken}`)
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data) {
+                                        // Store plan type and ending date in local storage
+                                        localStorage.setItem('planType', data.plan || '');
+                                        localStorage.setItem('endingDate', data['ending-date'] || '');
+                                    }
+                                    // Redirect to main page after successful login
+                                    window.location.href = './main.html';
+                                });
                         })
                         .catch((error) => {
-                            // Authentication failed
+                            // Handle authentication error
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Authentication Error',
@@ -106,6 +121,7 @@
                             document.getElementById('sub-txt').classList.remove('hidden');
                             document.getElementById('sub-spin').classList.add('hidden');
                         });
+
                 });
             </script>
 
