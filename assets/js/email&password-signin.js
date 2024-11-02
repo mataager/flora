@@ -97,14 +97,13 @@ function emailPasswordSignUp() {
                 phone: phone || null,
                 photoURL: profilePic || null,
               };
-              return firebase.database().ref(`users/${uid}`).set(userData);
             });
         })
         .then(() => {
           Swal.fire({
             icon: "success",
             title: "Account Created Successfully",
-            text: "Welcome! You can now sign in with your new account.",
+            text: "Welcome! You can now signed in",
           });
         })
         .catch((error) => {
