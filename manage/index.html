@@ -83,7 +83,7 @@
                             const uid = user.uid;
                             const createdAt = user.metadata.creationTime;
                             const lastSignInTime = user.metadata.lastSignInTime;
-                            const displayName = user.displayName;  // Retrieve the display name
+                            const displayName = user.displayName;
 
                             // Store user info in local storage
                             localStorage.setItem('uid', uid);
@@ -103,11 +103,14 @@
                                 .then((data) => {
                                     if (data) {
                                         // Store plan type and ending date in local storage
-                                        localStorage.setItem('planType', data.plan || '');
-                                        localStorage.setItem('endingDate', data['ending-date'] || '');
+                                        localStorage.setItem('planType', data.plan || 'plan');
+                                        localStorage.setItem('endingDate', data['ending-date']);
                                     }
-                                    // Redirect to main page after successful login
-                                    window.location.href = './main.html';
+
+                                    // Delay before redirecting to main page
+                                    setTimeout(() => {
+                                        window.location.href = './main.html';
+                                    }, 100); // 100ms delay
                                 });
                         })
                         .catch((error) => {
