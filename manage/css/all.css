@@ -907,18 +907,15 @@ section {
 }
 
 .input-wrapper button {
-  width: 44px;
-  height: 49px;
-  /* height: -webkit-fill-available; */
-  padding: 15px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: none;
-  background-color: #6a64f1 !important;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+     position: absolute;
+    width: 44px;
+    padding: 15px;
+    right: 0;
+    border: none;
+    background-color: #6a64f1 !important;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .input-wrapper button:hover {
